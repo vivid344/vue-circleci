@@ -6,6 +6,11 @@ jobs:
 
     working_directory: ~/repo
 
+    branches:
+      only:
+        - master
+        - develop
+
     steps:
       - checkout
 
@@ -30,11 +35,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
-
-    branches:
-      only:
-        - master
-        - develop
 
       - run:
           name: Install Firebase-tools
