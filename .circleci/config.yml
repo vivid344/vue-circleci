@@ -30,3 +30,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Install Firebase-tools
+          command: npm install -g firebase-tools
+
+      - run:
+          name: Deploy to Firebase hosting
+          command: firebase deploy --project "$FIREBASE_ID" --token "$FIREBASE_TOKEN"
